@@ -155,12 +155,19 @@ The system integrates external flight data sources and is designed with clean ar
 
 ```http
 GET /api/flights/search/?from=LAG&to=LON&date=2026-07-01
+```
+
+
+Request Body
+```json
 {
   "origin": "LAG",
   "destination": "LON",
   "departure_date": "2026-07-01"
 }
-🔹 Response
+```
+### Response
+```json
 {
   "results": [
     {
@@ -172,6 +179,6 @@ GET /api/flights/search/?from=LAG&to=LON&date=2026-07-01
   ]
 }
 
----
+```
 
 
