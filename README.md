@@ -181,4 +181,25 @@ Request Body
 
 ```
 
+```md
+### Cookie-based Authentication
 
+This API uses JWT authentication stored in **HTTP-only cookies** for improved security.  
+Access tokens are automatically sent with each request once the user is logged in.
+```
+
+## 🔹 Tech Stack
+```md
+
+- Python
+- Django
+- Django REST Framework
+- Simple JWT
+- django-cors-headers
+
+## Notes
+
+- This is a backend-only project.
+- All endpoints require authentication except register and login.
+- Frontend applications (React, Vue, Mobile apps) can consume this API.
+```
