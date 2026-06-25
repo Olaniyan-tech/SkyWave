@@ -58,3 +58,119 @@ The system integrates external flight data sources and is designed with clean ar
 ```bash
 git clone https://github.com/your-username/SkyWave.git
 cd SkyWave
+
+2. Create a virtual environment
+   ```bash
+   python -m venv venv
+
+3. Activate the virtual environment
+   ```bash
+   venv\Scripts\activate
+
+5. Install dependencies
+   ```bash
+   pip install -r requirements.txt
+
+7. Run migrations
+   ```bash
+   python manage.py migrate
+
+6. Start the server
+   ```bash
+   python manage.py runserver
+
+
+---
+
+
+## 🔹 API Endpoints
+
+### Authentication
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/accounts/register/` | POST | Register a new user |
+| `/api/accounts/login/` | POST | Login user and get JWT cookies |
+| `/api/accounts/token/refresh/` | POST | Refresh access token using refresh cookie |
+| `/api/accounts/logout/` | POST | Logout user and blacklist refresh token |
+
+### Profile
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/auth/my_profile/` | GET | Get logged-in user profile |
+
+
+### Email Verification
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/auth/verify-email/` | POST | Verify user email with token |
+| `/api/auth/resend-verification/` | POST | Resend verification email |
+
+
+### Password Reset
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/auth/password-reset/request/` | POST | Request password reset email |
+| `/api/auth/password-reset/confirm/` | POST | Confirm password reset with token |
+
+
+###  Flights
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/flights/search/` | GET | Search available flights |
+| `/api/flights/offers/` | GET | Retrieve flight offers |
+| `/api/flights/<offer_id>/` | GET | Get details of a specific flight offer |
+
+---
+
+###  Bookings
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/bookings/create/` | POST | Create a new booking |
+| `/api/bookings/` | GET | List all user bookings |
+| `/api/bookings/<id>/` | GET | Get booking details |
+| `/api/bookings/<id>/cancel/` | POST | Cancel a booking |
+
+---
+
+###  Payments
+
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/payments/` | GET | List all payments |
+| `/api/payments/initialize/` | POST | Initialize a new payment |
+| `/api/payments/verify/` | POST | Verify payment status |
+| `/api/payments/<booking_reference>/` | GET | Retrieve payment details for a specific booking |
+
+
+## 🔹 Example Request
+
+### Search Flights
+
+```http
+GET /api/flights/search/?from=LAG&to=LON&date=2026-07-01
+{
+  "origin": "LAG",
+  "destination": "LON",
+  "departure_date": "2026-07-01"
+}
+🔹 Response
+{
+  "results": [
+    {
+      "airline": "British Airways",
+      "price": 450000,
+      "currency": "NGN",
+      "duration": "6h 30m"
+    }
+  ]
+}
+
+---
+
+
