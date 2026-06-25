@@ -147,6 +147,7 @@ cd SkyWave
 | `/api/payments/verify/` | POST | Verify payment status |
 | `/api/payments/<booking_reference>/` | GET | Retrieve payment details for a specific booking |
 
+---
 
 ## 🔹 Example Request
 
