@@ -55,9 +55,9 @@ The system integrates external flight data sources and is designed with clean ar
 ## 🔹 Installation
 
 1. Clone the repository
-```bash
-git clone https://github.com/your-username/SkyWave.git
-cd SkyWave
+   ```bash
+   git clone https://github.com/your-username/SkyWave.git
+   cd SkyWave
 
 2. Create a virtual environment
    ```bash
