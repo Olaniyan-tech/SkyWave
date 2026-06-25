@@ -1,0 +1,59 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pdb
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Environment files — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# Migrations — compiled files only, keep the .py files
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/__pycache__/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Testing / coverage
+htmlcov/
+.coverage
+.pytest_cache/
+.tox/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Packaging
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Backup files
+*.bak
+*~
