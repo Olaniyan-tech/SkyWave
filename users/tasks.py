@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 User = get_user_model()
 
 
-@shared_task(bind=True, max_retries=3)
+@shared_task(max_retries=3)
 def send_verification_email(user_id, token):
     try:
         user = User.objects.get(id=user_id)
@@ -52,7 +52,7 @@ def send_verification_email(user_id, token):
         raise
 
 
-@shared_task(bind=True, max_retries=3)
+@shared_task(max_retries=3)
 def send_welcome_email(user_id):
     try:
         user = User.objects.get(id=user_id)
@@ -84,7 +84,7 @@ def send_welcome_email(user_id):
         raise
 
 
-@shared_task(bind=True, max_retries=3)
+@shared_task(max_retries=3)
 def send_password_reset_email(user_id, token):
     try:
         user = User.objects.get(id=user_id)
