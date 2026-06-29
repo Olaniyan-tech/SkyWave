@@ -64,7 +64,7 @@ class FlightOfferDetailView(APIView):
         if not result['success']:
             return Response({
                 "error": result['error']}, 
-                status=status.HTTP_404_NOT_FOUND
+                status=result["status"]
             )
         
         return Response(result['data'], status=status.HTTP_200_OK)

@@ -11,5 +11,5 @@ urlpatterns = [
     path('', PaymentListView.as_view(), name='payment-list'),
     path('initialize/', PaymentInitializeView.as_view(), name='payment-initialize'),
     path('verify/', PaymentVerifyView.as_view(), name='payment-verify'),
-    path('<str:booking_reference>/', PaymentDetailView.as_view(), name='payment-detail'),
+    path('<str:booking_reference>/details/', PaymentDetailView.as_view(), name='payment-detail'),
 ]

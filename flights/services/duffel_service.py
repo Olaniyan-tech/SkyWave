@@ -73,19 +73,40 @@ def get_offer(offer_id):
         )
         data = response.json()
 
+        if response.status_code == 404:
+            return {
+                "success": False,
+                "status": 404,
+                "error": "Offer not found."
+            }
+
         if response.status_code != 200:
             logger.error(f"Duffel get offer error: {data}")
-            return {"success": False, "error": data.get("errors", [{}])[0].get("message", "Failed to retrieve offer")}
+            return {
+                "success": False,
+                "status": response.status_code,
+                "error": data.get("errors", [{}])[0].get("message", "Failed to retrieve offer")
+            }
 
         offer = data.get("data", {})
         return {"success": True, "data": offer}
     
     except requests.Timeout:
-        return {'success': False, 'error': 'Request timed out.'}
+        return {
+        "success": False,
+        "status": 503,
+        "error": "Request timed out."
+    }
 
     except requests.RequestException as e:
         logger.error(f"Duffel get offer error: {e}")
-        return {'success': False, 'error': 'Service is currently unavailable. Please try again later.'}
+        return {
+        "success": False,
+        "status": 503,
+        "error": "Service is currently unavailable. Please try again later."
+    }
+
+
 
 
 def search_airports(query):

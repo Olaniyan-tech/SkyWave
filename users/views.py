@@ -227,13 +227,12 @@ class VerifyEmailView(APIView):
                 {"error": e.message if e.message else str(e)}, 
                 status=status.HTTP_400_BAD_REQUEST
             )
-        except Exception as e:
-            logger.error(f"Email verification error: {str(e)}")
+        except Exception:
+            logger.error(f"Email verification error")
             return Response(
                 {
                     "error": "Email verification failed",
-                    "detail": str(e)
-                 }, 
+                }, 
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
@@ -256,7 +255,7 @@ class ResendVerificationEmailView(APIView):
         if user.email_verified:
             return Response(
                 {"message": "Your email is now verified."}, 
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_200_OK
             )
 
         token = get_email_verification_token(user)
